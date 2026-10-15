@@ -1,0 +1,13 @@
+# Type LoadBalancer: K3s exposes port 8888 on the nodes, and the k3d load
+# balancer maps it to port 8888 of the host (k3d cluster create -p).
+apiVersion: v1
+kind: Service
+metadata:
+  name: playground
+spec:
+  type: LoadBalancer
+  selector:
+    app: playground
+  ports:
+    - port: 8888
+      targetPort: 8888
